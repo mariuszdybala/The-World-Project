@@ -1,4 +1,4 @@
-﻿body {
+﻿/*body {
     font-family: sans-serif;
     font-size: 14px;
     margin: 0px;
@@ -11,10 +11,10 @@ label {
 
 input[type=text], input[type=password], textarea {
     width: 150px;
-}
+}*/
 
 #main {
-    background-color: #e6dddd;
+  
     padding: 4px;
     margin: 0;
 }
@@ -34,14 +34,14 @@ input[type=text], input[type=password], textarea {
     transition: left ease .25s;
 }
 
-#footer {
+/*#footer {
     background-color: #222;
     color: aliceblue;
     padding: 5px;
     bottom: 0;
     width: 100%;
     position: fixed;
-}
+}*/
 
 .headshot {
     max-width: 50px;
@@ -65,6 +65,7 @@ input[type=text], input[type=password], textarea {
         }
 
 #wrapper {
+    
     margin: 0 0 0 250px;
     -moz-transition: margin-left ease .25s;
     -o-transition: margin-left ease .25s;
@@ -87,3 +88,4 @@ input[type=text], input[type=password], textarea {
     -webkit-transition: margin-left ease .25s;
     transition: margin-left ease .25s;
 }
+
