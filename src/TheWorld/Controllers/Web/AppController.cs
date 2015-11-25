@@ -8,7 +8,7 @@ namespace TheWorldController.Web
 {
     public class AppController: Controller
     {
-         public IMailService _mailservice { get; }
+        public IMailService _mailservice { get; }
 
         public AppController(IMailService service)
         {
@@ -48,7 +48,7 @@ namespace TheWorldController.Web
 
                     ViewBag.Message = "Mail Send. Thanks";
                 }
-               
+
             }
             return View();
         }
