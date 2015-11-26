@@ -10,5 +10,18 @@ namespace TheWorld.Models
     {
         public DbSet<Trip> Trips { get; set; }
         public DbSet<Stop> Stops { get; set; }
+
+        public WorldConext()
+        {
+            //Database.EnsureCreated();
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder option)
+        {
+            var cs = Startup.Configuration["Data:TheWorldDB:ConnectionString"];
+            option.UseSqlServer(cs);
+            base.OnConfiguring(option);
+        }     
+
     }
 }

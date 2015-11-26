@@ -3,22 +3,28 @@ using System;
 using TheWorld.ViewModels;
 using TheWorld.Services;
 using TheWorld;
+using TheWorld.Models;
+using System.Linq;
 
 namespace TheWorldController.Web
 {
     public class AppController: Controller
     {
         public IMailService _mailservice { get; }
+        public WorldConext _context { get; set; }
 
-        public AppController(IMailService service)
+        public AppController(IMailService service, WorldConext context)
         {
             _mailservice = service;
-
+            _context = context;
         }
 
         public IActionResult Index()
+
         {
-            return View();
+            var data = new WorldContextRepository(_context).GetAllDate();
+            var trips = _context.Trips.OrderBy(x=>x.Name).ToList();
+            return View(trips);
         }
 
         public IActionResult About()
