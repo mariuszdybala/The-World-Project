@@ -25,7 +25,7 @@
         <ul>
             @foreach (var trip in Model)
             {
-                <il> @trip.Name </il>
+                <li> @trip.Name (@trip.Created.ToShortDateString())</li>
             }
 
         </ul>

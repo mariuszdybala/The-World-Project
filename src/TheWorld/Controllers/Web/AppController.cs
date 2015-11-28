@@ -11,19 +11,18 @@ namespace TheWorldController.Web
     public class AppController: Controller
     {
         public IMailService _mailservice { get; }
-        public WorldConext _context { get; set; }
+        public IWorldRepository _repositry { get; set; }
 
-        public AppController(IMailService service, WorldConext context)
+        public AppController(IMailService service, IWorldRepository repositry)
         {
             _mailservice = service;
-            _context = context;
+            _repositry = repositry;
         }
 
         public IActionResult Index()
-
         {
-            var data = new WorldContextRepository(_context).GetAllDate();
-            var trips = _context.Trips.OrderBy(x=>x.Name).ToList();
+            var trips = _repositry.GetAllTrips();
+
             return View(trips);
         }
 
