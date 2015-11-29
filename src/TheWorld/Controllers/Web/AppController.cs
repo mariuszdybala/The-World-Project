@@ -26,7 +26,7 @@ namespace TheWorldController.Web
         }
 
 
-        [Authorize]
+      //  [Authorize]
         public IActionResult Trips()
         {
             var trips = _repositry.GetAllTrips();

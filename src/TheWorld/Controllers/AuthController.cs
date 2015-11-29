@@ -24,7 +24,8 @@ namespace TheWorld.Controllers
         // GET: /<controller>/
         public IActionResult Login()
         {
-            if(User.Identity.IsAuthenticated)
+            //if(User.Identity.IsAuthenticated)
+            if(true)
             {
                 // Jeżeli użytkownik jest zalogowany to od razu leci na strone z trasami !
                 return RedirectToAction("Trips", "App");
