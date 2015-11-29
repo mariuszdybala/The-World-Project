@@ -9,11 +9,13 @@ using TheWorld.ViewModels;
 using AutoMapper;
 using Microsoft.Framework.Logging;
 using TheWorld.Services;
+using Microsoft.AspNet.Authorization;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TheWorld.Controllers.Api
 {
+    [Authorize]
     [Route("api/trips/{tripName}/stops")]
     public class StopController : Controller
     {
@@ -38,7 +40,8 @@ namespace TheWorld.Controllers.Api
 
                 var decode = WebUtility.UrlDecode(tripName);
 
-                var result = _repository.GetTripByName(decode);
+                var result = _repository.GetTripByName(decode, User.Identity.Name);
+
                 if (result == null)
                 {
                     return Json(null);
@@ -75,7 +78,7 @@ namespace TheWorld.Controllers.Api
                     stop.Longitude = coordResult.Long;
 
                     //Save DB
-                    _repository.SaveStop(decode,stop);
+                    _repository.SaveStop(decode,User.Identity.Name, stop);
                     if(_repository.SaveAll())
                     {
                         return Json("Stop is Saved");

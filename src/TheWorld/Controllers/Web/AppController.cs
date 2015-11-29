@@ -5,6 +5,7 @@ using TheWorld.Services;
 using TheWorld;
 using TheWorld.Models;
 using System.Linq;
+using Microsoft.AspNet.Authorization;
 
 namespace TheWorldController.Web
 {
@@ -20,6 +21,13 @@ namespace TheWorldController.Web
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+
+        [Authorize]
+        public IActionResult Trips()
         {
             var trips = _repositry.GetAllTrips();
 

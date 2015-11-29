@@ -12,17 +12,27 @@
 </head>
 <body>
     <div id="sidebar">
+        @if (User.Identity.IsAuthenticated)
+        {
         <img src="~/img/dupcio.jpg" alt="headshot" class="headshot" />
-        <span id="username">Mariusz Dybala</span>
+        <span id="username">@User.Identity.Name</span>
+        }
         <div class="row">
             <div class="col-md-offset-5">
                 <ul class="nav">
                     <li class="active"><a asp-conntroler="App" asp-action="Index">Home</a></li>
                     <li><a asp-conntroler="App" asp-action="About">About</a></li>
                     <li><a asp-conntroler="App" asp-action="Contact">Contact</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a asp-conntroler="App" asp-action="Trips">Trips</a></li>
+                        <li><a asp-conntroler="Auth" asp-action="Logout">Logout</a></li>
+                    }
                 </ul>
+
             </div>
         </div>
+        
     </div>
     <div id="wrapper">
         <nav class="navbar navbar-inverse">
